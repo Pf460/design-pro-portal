@@ -1,0 +1,25 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}<title>Home Page</title>{% endblock %}
+
+{% block content %}
+  <h1>Home page</h1>
+
+  <h2>Заявок в работе: {{num_in_progress_applications}}</h2>
+  <div class="gallery">
+    {% for application in completed %}
+      <div class="cart">
+        {% if application.design_image %}
+          <img src="{{application.design_image.url}}" width="200">
+        {% endif %}
+        <p><strong>{{application.title}}</strong></p>
+        <p>{{application.description}}</p>
+        <p><strong>{{application.created_at}}</strong></p>
+        <p><strong>{{application.updated_at}}</strong></p>
+      </div>
+
+    {% empty %}
+      <h2>Пока заявок нет</h2>
+    {% endfor %}
+  </div>
+{% endblock %}

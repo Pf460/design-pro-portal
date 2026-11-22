@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}<title>Design.PRO</title>{% endblock %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% block sidebar %}
+    <div class="sidebar-nav">
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li> <a href="">Login</a></li>
+                {% if user.is_autenticated %}
+                    <li><a href="">My applications</a></li>
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <buttom type="submit">Logout</buttom>
+                    </form>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    {% endblock %}
+
+    <div class="main-content">{% block content %}{% endblock %}</div>
+
+</body>
+</html>
