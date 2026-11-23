@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Вход</title>{% endblock %}
+
+{% block content %}
+    <h2>Вход</h2>
+
+    {% if form.non_field_errors %}
+        <div style="color: red;">{{ form.non_field_errors }}</div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <p>{{ form.username.label_tag }}<br>{{ form.username }}</p>
+        <p>{{ form.password.label_tag }}<br>{{ form.password }}</p>
+        <button type="submit">Войти</button>
+    </form>
+
+    <p>Нет аккаунта? <a href="{% url 'register' %}">Зарегистрироваться</a></p>
+{% endblock %}

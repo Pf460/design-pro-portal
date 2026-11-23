@@ -1,0 +1,9 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Login</title>{% endblock %}
+
+{% block content %}
+  <h2>Выход</h2>
+
+  <p>Вы можете продолжить пользоваться сайтом в режим гостя, но можете войти снова <a href="{% url 'login' %}">Войти</a></p>
+{% endblock %}

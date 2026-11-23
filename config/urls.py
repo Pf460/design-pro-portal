@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('applications/', include('apps.applications.urls')),
     path('', RedirectView.as_view(url='/applications/', permanent=True)),
+    path('accounts/', include('apps.authentications.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
