@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Delete application</title>{% endblock %}
+
+{% block content %}
+
+    <h2>Вы действительно хотите удалить заявку {{application.title}}</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Удалить заявку</button>
+    </form>
+
+    <p><a href="{% url 'profile' %}">Назад в профиль</a></p>
+
+{% endblock %}

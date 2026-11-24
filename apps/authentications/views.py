@@ -32,6 +32,3 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return render(request, 'logout.html')
-
-def profile_view(request):
-    return render(request, 'profile.html')

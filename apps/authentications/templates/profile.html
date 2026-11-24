@@ -1,12 +1,72 @@
 {% extends "base_generic.html" %}
 
-{% block title %}<title>Login</title>{% endblock %}
+{% block title %}<title>Profile</title>{% endblock %}
 
 {% block content %}
-  <h2>Профиль {{user.username}}</h2>
+
+  {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+              <p style="color: green; font-weight: bold; font-size: 16pt;">{{message}}</p>
+            {% elif message.tags == 'error' %}
+              <p style="color: red; font-weight: bold; font-size: 16pt;">{{message}}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+  {% endif %}
+
+  <h2>Профиль {{user.username}}</h2><br>
 
   <div class="user-info">
-    
-  </div>
+    <p>Email: <strong>{{user.email}}</strong></p>
+  </div><br>
 
+  <button class="buttons" type="button">
+    <a href="{% url 'create_application' %}" style="color: black;">Создать новую заявку</a>
+  </button><br><br>
+
+  <div>
+    <strong>Фильтр: </strong>
+    <a href="?status=">Все</a>
+    <a href="?status=n">Новые</a>
+    <a href="?status=a">В работе</a>
+    <a href="?status=c">Выполненные</a>
+  </div><br>
+  <table style="border: 1px solid black; width:100%; border-collapse: collapse; text-align: center;">
+    <thead>
+      <tr>
+        <th>Название</th>
+        <th>Описание</th>
+        <th>Категория</th>
+        <th>Статус</th>
+        <th>Дата</th>
+        <th>Действия</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for app in applications %}
+        <tr>
+          <td><a href="{% url 'application_detail' app.id %}">{{ app.title }}</a></td>
+          <td>{{ app.description|truncatechars:50 }}</td>
+          <td>{{ app.category.name }}</td>
+          <td>{{ app.get_status_display }}</td>
+          <td>{{ app.created_at|date:"d.m.Y H:i" }}</td>
+          <td>
+            {% if app.status == 'n' %}
+              <button class="buttons" type="button">
+                <a href="{% url 'delete_application' app.id %}" style="color: black;">Удалить заявку</a>
+              </button>
+            {% else %}
+              —
+            {% endif %}
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="6">У вас пока нет заявок.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}
