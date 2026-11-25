@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'apps.applications',
     'apps.authentications',
     'apps.superadmins',
+    'apps.snippets',
 ]
 
 MIDDLEWARE = [

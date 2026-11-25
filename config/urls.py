@@ -28,6 +28,7 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/applications/', permanent=True)),
     path('accounts/', include('apps.authentications.urls')),
     path('superadmin/', include('apps.superadmins.urls')),
+    path('api/', include('apps.snippets.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
