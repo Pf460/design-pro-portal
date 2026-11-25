@@ -4,14 +4,14 @@
 
 {% block content %}
     <h2>{{application.title}}</h2><br>
-    <p>{{application.description}}</p><br>
+    <p style="word-break: break-all; white-space: normal;">{{application.description}}</p><br>
     <img src="{{application.photo.url}}" alt="Фото помещения" style="display: block; height: auto; width: 200px;"><br>
     <p>{{application.created_at|date:"d.m.Y H:i"}}</p>
-    {% if application.status == 'c' %}
+    {% if application.status == 'c' or application.status == 'a' %}
       <hr>
       <p><strong>Изменения от студии</strong></p><br>
       {% if application.admin_comment %}
-        <p><strong>Комментарий от админа: </strong>{{application.admin_comment}}</p><br>
+        <p style="word-break: break-all; white-space: normal;"><strong>Комментарий от админа: </strong>{{application.admin_comment}}</p><br>
       {% endif %}
       {% if application.design_image %}
         <img src="{{application.design_image.url}}" alt="Фото дизайна" style="display: block; height: auto; width: 200px;"><br>

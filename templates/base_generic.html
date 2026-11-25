@@ -17,6 +17,10 @@
                 {% endif %}
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'profile' %}">Profile</a></li>
+                    {% if user.is_superuser %}
+                        <li><a href="{% url 'index_admin' %}">Admin-panel</a></li>
+                        <li><a href="{% url 'list_categories' %}">Categories-actions</a></li>
+                    {% endif %}
                     <form method="POST" action="{% url 'logout' %}">
                         {% csrf_token %}
                         <button type="submit">Logout</button>

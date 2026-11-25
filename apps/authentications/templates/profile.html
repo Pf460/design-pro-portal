@@ -54,9 +54,9 @@
           <td>{{ app.created_at|date:"d.m.Y H:i" }}</td>
           <td>
             {% if app.status == 'n' %}
-              <button class="buttons" type="button">
+              <br><button type="button">
                 <a href="{% url 'delete_application' app.id %}" style="color: black;">Удалить заявку</a>
-              </button>
+              </button><br><br>
             {% else %}
               —
             {% endif %}

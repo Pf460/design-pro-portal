@@ -25,7 +25,7 @@ class Application(models.Model):
     )
     status = models.CharField(max_length=1, choices=APPLICATION_STATUS, default='n')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    admin_comment = models.TextField(max_length=500, blank=True, null=True)
+    admin_comment = models.TextField(max_length=500, blank=True)
     design_image = models.ImageField(upload_to='applications_design/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

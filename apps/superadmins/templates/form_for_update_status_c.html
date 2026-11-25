@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block title %}<title>Update application</title>{% endblock %}
+
+{% block content %}
+
+    <h2>Обновление статуса заявки {{application.title}} на "Выполнено"</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Обновить</button>
+    </form>
+
+    <p><a href="{% url 'index_admin' %}">Назад в панель администратора</a></p>
+
+{% endblock %}
