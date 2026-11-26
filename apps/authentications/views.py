@@ -1,5 +1,7 @@
 from django.contrib.auth import login, logout
 from django.shortcuts import render, redirect
+from django.views.decorators.http import require_POST
+
 from .forms import RegisterForm, LoginForm
 from .service import AuthenticationViewFunction
 
@@ -29,6 +31,7 @@ def login_view(request):
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
+@require_POST
 def logout_view(request):
     logout(request)
     return render(request, 'logout.html')

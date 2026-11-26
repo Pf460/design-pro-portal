@@ -34,8 +34,10 @@ def update_status_on_accept_is_processed(request, pk):
 
         if form.is_valid():
             comment = form.cleaned_data['comment']
-            service.update_status_on_a(application, comment)
-            messages.success(request, 'Вы успешно обновили статус на принято в работу')
+            if service.update_status_on_a(application, comment):
+                messages.success(request, 'Вы успешно обновили статус на "Принято в работу"')
+            else:
+                messages.error(request, 'Статус можно изменить только у заявки со статусом "Новая"')
             return redirect('index_admin')
     else:
         form = AcceptStatusForm()
@@ -55,8 +57,10 @@ def update_status_on_completed(request, pk):
 
         if form.is_valid():
             design_image = form.cleaned_data['design_image']
-            service.update_status_on_c(application, design_image)
-            messages.success(request, 'Вы успешно обновили ')
+            if service.update_status_on_c(application, design_image):
+                messages.success(request, 'Вы успешно обновили статус на "Выполнено"')
+            else:
+                messages.error(request, 'Статус можно изменить только у заявки со статусом "Новая"')
             return redirect('index_admin')
     else:
         form = CompleteStatusForm()

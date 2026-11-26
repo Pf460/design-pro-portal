@@ -1,8 +1,5 @@
 from django.db.models import QuerySet
-from django.http import request
 from django.shortcuts import get_object_or_404
-
-from .forms import ApplicationForm
 from .models import Application
 
 

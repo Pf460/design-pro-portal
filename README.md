@@ -27,6 +27,11 @@ Windows
 pip install -r requirements.txt
 ````
 
+4. Создание .env файла
+````bash
+cp .env.example .env
+````
+
 4. Миграции
 ````bash
 python manage.py makemigrations
