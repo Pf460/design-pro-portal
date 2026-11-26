@@ -32,18 +32,18 @@ pip install -r requirements.txt
 cp .env.example .env
 ````
 
-4. Миграции
+5. Миграции
 ````bash
 python manage.py makemigrations
 python manage.py migrate
 ````
 
-5. Создание суперпользователя
+6. Создание суперпользователя
 ````bash
 python manage.py createsuperuser
 ````
 
-6. Запуск сервера
+7. Запуск сервера
 ````bash
 python manage.py runserver
 ````
