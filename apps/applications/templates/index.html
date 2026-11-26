@@ -16,9 +16,8 @@
           <img src="{{application.design_image.url}}" width="200">
         {% endif %}
         <p><strong>{{application.title}}</strong></p>
-        <p>{{application.description}}</p>
-        <p><strong>{{application.created_at}}</strong></p>
-        <p><strong>{{application.updated_at}}</strong></p>
+        <p>Категория: <strong>{{application.category}}</strong></p><br>
+        <p>{{application.updated_at}}</p><br>
       </div>
     {% empty %}
       <h2>Пока заявок нет</h2>

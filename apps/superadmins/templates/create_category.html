@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base_generic.html" %}
 
-</body>
-</html>
+{% block title %}<title>Create category</title>{% endblock %}
+
+{% block content %}
+
+    <h2>Создание категории</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <p>{{ form.as_p }}</p>
+
+        <button type="submit">Создать категорию</button>
+    </form>
+
+    <p><a href="{% url 'list_categories' %}">Назад к списку категория</a></p>
+
+{% endblock %}

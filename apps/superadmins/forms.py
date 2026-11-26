@@ -29,6 +29,8 @@ class CompleteStatusForm(forms.Form):
         return design_image
 
 class CategoryForm(forms.Form):
-    class Meta:
-        model = Category
-        fields = ['name']
+    name = forms.CharField(
+        max_length=100,
+        label="Название новой категории",
+        required=True
+    )
